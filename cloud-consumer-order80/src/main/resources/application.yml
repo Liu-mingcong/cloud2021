@@ -1,0 +1,27 @@
+server:
+  port: 80
+eureka:
+  client:
+    # 注册进 Eureka 的服务中心
+    register-with-eureka: true
+    # 检索 服务中心 的其它服务
+    fetch-registry: true
+    service-url:
+      # 设置与 Eureka Server 交互的地址
+      defaultZone: http://eureka7001.com:7001/eureka, http://eureka7002.com:7002/eureka
+  instance:
+      instance-id: consumer80     #更改主机名称
+      prefer-ip-address: true     #显示IP地址
+spring:
+#  banner:更改启动图或将图片改为banner.jpg
+#    image:
+#      location:
+#        classpath: banner.jpg
+  application:
+    name: cloud-order-service
+    #P94 需要的配置
+  zipkin:
+    base-url: http://localhost:9411
+    sleuth:
+      sampler:
+        probability: 1  #采样率值介于0-1之间,1标识全部采集
